@@ -29,13 +29,12 @@ const Style = styled.div`
     border: 1px solid black;
     width:471px;
     height:471px;
-    cursor:pointer;
+    cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
 
 
 }
 .sex-container img{
-    width: 122.283px;
-    height: 86.073px;
+    
 }
 .sex-container div{
     color: #000;

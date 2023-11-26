@@ -3,28 +3,42 @@ import option2 from './img/trapezialOption1.svg';
 import option1 from './img/trapezialOption2.svg';
 
 import styled from 'styled-components';
-const PhotoBox = styled.div`
+const Box = styled.div`
 
-
-.image-container{
-    width:250px;
+    margin: 0 10%;
+    width: 376px;
+    height: 193px;
+    border: 1px solid #000;
+    background: #FFF;    
+    border-radius:20px;
+    margin-bottom:400px;
+    font-weight: 600;
+    font-size: 16px;
+    text-align:center;
     display:flex;
     justify-content:center;
-}
-.image-container img{
-scale:1;
-padding:10px;
 
-}
-.upload-btn-container{
-    display:flex;
-    flex-direction:row;
-    width:100%;
-    justify-content:space-between;
-}
-input[type="file"]::-webkit-file-upload-button{
-    display:none;
- }
+    .upload-btn-container{
+        display:flex;
+        flex-direction:row;
+        width:100%;
+        justify-content:center;
+        align-items:center;
+    }
+    input[type="file"]::-webkit-file-upload-button{
+        display:none;
+    }
+    .text-container{
+        width: 280px;
+        height:auto;
+        display:flex;
+        flex-direction:column;
+        justify-content:space-around;
+        align-items:center;
+        padding:5px;
+    
+    }
+
 `
 function PhotoUploadBox(){
     const [uploadedImage, setUploadedImage] = useState(null);
@@ -40,8 +54,8 @@ function PhotoUploadBox(){
       };
     
       return (
-        <PhotoBox>
-        <div className='box photo-container'>
+        <Box>
+        
           <div className='text-container'>
             사진을 업로드하세요.<br/><br/>
             본인의 체형이 잘 나온 사진을 업로드하여 가장 '나다운' 몸을 만들어보세요.<br/><br/>
@@ -54,8 +68,8 @@ function PhotoUploadBox(){
                     )}
                 {uploadedImage==null && (
                     <div>
-                        <input className='add-photo' type="file" id="file-input" name="ImageStyle" onChange={handleImageUpload}/>
-                        <div>사진을 업로드해주세요</div>
+                        <input className='add-photo' type="file" id="file-input" name="ImageStyle" style={{ display: 'none' }} onChange={handleImageUpload}/>
+                        <label htmlFor="file-input" style={{ cursor: `url('/img/cursor/pointerCursor.png') 2 2, auto` }}>사진을 업로드해주세요</label>
                     </div>
                 )}
 
@@ -65,7 +79,7 @@ function PhotoUploadBox(){
           </div>
 
           
-        </div>
+       
         {uploadedImage && (
               <img
                 className='uploaded-img'
@@ -74,7 +88,7 @@ function PhotoUploadBox(){
                 src={uploadedImage}
               />
             )}
-        </PhotoBox>
+        </Box>
       );
     }
 
@@ -92,7 +106,7 @@ function AvatarControllerBox({description,rangeVal,userRangeInput, isTrapezial})
         
     }
     return(
-        <div className='box controller-container'>
+        <Box>
             {isTrapezial === true && 
             <div className='trapezial-container'>
                 <p>{description} 선택해주세요.</p>
@@ -141,7 +155,7 @@ function AvatarControllerBox({description,rangeVal,userRangeInput, isTrapezial})
                 </div>
             </div>}
         
-        </div>
+        </Box>
     )
 }
 

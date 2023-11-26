@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import MakingAvatar from './MakingAvatar';
 import ChooseSex from './ChooseSex';
 import progressBar from './img/progressBar/progressBar_sex.svg'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route ,useNavigate} from 'react-router-dom';
 import logo from './img/logo_2.svg';
 
 const AvatarPageStyle = styled.div`
@@ -14,6 +14,7 @@ height:100vh;
 display: flex;
 justify-content: center;
 align-items: center;
+cursor: url('/img/cursor/defaultCursor.png') 2 2, auto;
 
 .avatar-container{
     width:1920px;
@@ -39,10 +40,11 @@ align-items: center;
     position:absolute;
     top:25px;
     left:15px;
+    cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
 }
 .arrows{
     position:fixed;
-    cursor:pointer;
+    cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
 
 }
 #arrow-R{
@@ -58,18 +60,18 @@ align-items: center;
 
 `
 function AvatarPage(){
-    
+    let navigate = useNavigate();
+
     return(
         <AvatarPageStyle>
             <div className='main-container'>
-                <img className='logo' src={logo} alt='logo image'/>
+                <img className='logo' src={logo} alt='logo image' onClick={()=>navigate('/')}/>
                 <div className='avatar-container'>
                         <img className='progress-bar' src={progressBar}></img>
                     <div className='avatar-and-progress-bar'>
-                        
+
                         <ChooseSex/>
-                        
-                        
+
                     </div>
                     
                     

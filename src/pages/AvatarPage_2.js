@@ -23,7 +23,7 @@ height:100vh;
 display: flex;
 justify-content: center;
 align-items: center;
-
+cursor: url('/img/cursor/defaultCursor.png') 2 2, auto;
 .avatar-container{
     width:1920px;
     display:flex;
@@ -48,10 +48,11 @@ align-items: center;
     position:absolute;
     top:25px;
     left:15px;
+    cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
 }
 .arrows{
     position:fixed;
-    cursor:pointer;
+    cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
 }
 #arrow-R{
     right:50px;
@@ -62,6 +63,7 @@ align-items: center;
 .progress-bar{
     margin-bottom:10px;
 }
+
 .making-avatar{
     display:flex;
     //border: 1px solid blue;
@@ -72,50 +74,27 @@ align-items: center;
     
 }
 
-.box{
-    margin: 0 10%;
-    width: 376px;
-    height: 193px;
-    border: 1px solid #000;
-    background: #FFF;    
-    border-radius:20px;
-    margin-bottom:400px;
-    font-weight: 600;
-    font-size: 16px;
-    text-align:center;
-    display:flex;
-    justify-content:center;
+
+
+.controller-container{
+
 }
+
+
 .image-container{
-    width:250px;
+    width:280px;
     display:flex;
     justify-content:center;
 }
 .image-container img{
+    
 scale:1;
 padding:10px;
 
 }
-.upload-btn-container{
-    display:flex;
-    flex-direction:row;
-    width:100%;
-    justify-content:space-between;
-}
-input[type="file"]::-webkit-file-upload-button{
-    display:none;
- }
 
-.text-container{
-    width: 280px;
-    height:auto;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-around;
-    align-items:center;
-    padding:5px;
 
-}
+
 .trapezial-container{
     width: 280px;
     display:flex;
@@ -129,7 +108,7 @@ input[type="file"]::-webkit-file-upload-button{
 }
 .add-photo{
     text-decoration: underline;
-    cursor:pointer;
+    cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;;
 }
 .slider-input{
     width:306px;
@@ -148,7 +127,7 @@ height: 12px;
     background:url('/img/sliderThumb.png');
     width:30px;
     height:30px;
-       
+    cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;   
     
 
 }
@@ -159,7 +138,7 @@ height: 12px;
     justify-content:space-between;
 }
 .shoulder-icon{
-    cursor:pointer;
+    cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
 }
 .uploaded-img{
     position:fixed;
@@ -279,19 +258,15 @@ function AvatarPage_2(){
                     <div className='avatar-and-progress-bar'>
                         <LeftArrow className='arrows' setStep={handleStep} />
                         <div className='making-avatar'>
-                            <PhotoUploadBox className='box photo-container'/>
+                            <PhotoUploadBox />
                             
                             <div className='image-container'>
-                            
-                            {isTrapezial && (
-                            <img className='avatar-img' src={`/img/avatar/${imageArray[rangeVal] || imageArray[0]}.png`} alt='Avatar' />
-                            )}
-                            {!isTrapezial && (
-                            <img className='avatar-img' src={`/img/avatar/${imageArray[rangeVal - 1] || imageArray[0]}.png`} alt='Avatar' />
-                            )}
-                            
-                            
-
+                                {isTrapezial && (
+                                <img className='avatar-img' src={`/img/avatar/${imageArray[rangeVal] || imageArray[0]}.png`} alt='Avatar' />
+                                )}
+                                {!isTrapezial && (
+                                <img className='avatar-img' src={`/img/avatar/${imageArray[rangeVal - 1] || imageArray[0]}.png`} alt='Avatar' />
+                                )}
                             </div>
                             <AvatarControllerBox description={des[step]} rangeVal={rangeVal} userRangeInput={userRangeInput} isTrapezial={isTrapezial}/>
                         </div>

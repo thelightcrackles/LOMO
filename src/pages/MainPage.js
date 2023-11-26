@@ -11,6 +11,7 @@ import {Routes,Route,Link,useNavigate,Outlet} from 'react-router-dom'
 
 const ShapedBlock = styled.div`
 // height:1080px;
+cursor: url('/img/cursor/defaultCursor.png') 2 2, auto;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -23,7 +24,7 @@ margin:20px 107px 20px 107px;
         justify-content: center;
         align-items: center;
         position:relative;
-        cursor: url('/img/defaultCursor.png') 2 2, auto;
+        
     }
     .title-container{
       width:100%;
@@ -81,7 +82,7 @@ margin:20px 107px 20px 107px;
 }
 
 .hoverEvent{
-  cursor:pointer;
+  cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
 }
 .modal-container{
   height:100vh;
@@ -93,7 +94,7 @@ margin:20px 107px 20px 107px;
 }
 
 `
-function Shapes() {
+function MainPage() {
     const shapesRef = useRef(null);
     let navigate = useNavigate();
 
@@ -246,4 +247,4 @@ function Shapes() {
   );
 }
 
-export default Shapes;
+export default MainPage;
