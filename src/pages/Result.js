@@ -2,7 +2,6 @@ import {React,useEffect,useState} from 'react';
 import styled from 'styled-components';
 import ScrollHorizontal from 'react-scroll-horizontal';
 import background from './img/snowBG.svg'
-import anim1 from './img/animal/namu.svg'
 import {Text_upper,Text_lower} from './text';
 import { useLocation,useNavigate } from 'react-router-dom';
 import bodyData from './bodyData';
