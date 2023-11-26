@@ -182,13 +182,13 @@ function AvatarPage_2(){
     }
 
     useEffect(()=>{
-        console.log('new array :',imageArray);
+        //console.log('new array :',imageArray);
         
         //페이지 컨트롤
         if(step==0){
             navigate('/avatar/0')
         }else if(step==6){
-            navigate('/avatar/result');
+            navigate('/avatar/loading' ,{ state: finalRangeVal });
         }else if(step<0){
             setStep(0);
             navigate('/avatar/0');
@@ -208,7 +208,7 @@ function AvatarPage_2(){
 
         // step에 맞게 이미지 배열 변경 
         makingArray(step)
-        console.log('final range :',finalRangeVal);
+        //console.log('final range :',finalRangeVal);
     },[step])
    
     function makingArray(step){
