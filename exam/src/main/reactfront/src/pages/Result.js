@@ -1,10 +1,13 @@
 import {React,useEffect,useState} from 'react';
 import styled from 'styled-components';
-//import ScrollHorizontal from 'react-scroll-horizontal';
+// import ScrollHorizontal from 'react-scroll-horizontal';
 import background from './img/snowBG.svg'
 import {Text_upper,Text_lower} from './text';
 import { useLocation,useNavigate } from 'react-router-dom';
 import bodyData from './bodyData';
+import { useHorizontalScroll } from "./useSideScroll";
+
+
 const ResultPageStyle=styled.div`
 width:100vw;
 
@@ -33,6 +36,10 @@ font-family: 'Noto Sans KR', sans-serif;
    left:28vw;
     
 }
+#scroll-horizontal{
+    display:flex;
+    flex-direction:row;
+}
 
 
 `
@@ -58,13 +65,14 @@ function Result(){
         console.log('Entry not found for search value:', searchValue);
     }
     
-    
+    const scrollRef = useHorizontalScroll();
+
     return(
-        <ResultPageStyle>
+        <ResultPageStyle >
             <div className='avatar-section' >
                 <AvatarSection upperBody={upperBody} lowerBody={lowerBody} imgSrc={`/img/avatar/${searchValue}.png`}/>
             </div>
-            <div className='text-section' id='scroll-horizontal' >
+            <div className='text-section' id='scroll-horizontal' ref={scrollRef} style={{ overflow: "auto" }}>
                 {/* <ScrollHorizontal reverseScroll = { true }> */}
                     <TextSection_upper type={upperBody} />
                     <TextSection_lower type={lowerBody}/>
