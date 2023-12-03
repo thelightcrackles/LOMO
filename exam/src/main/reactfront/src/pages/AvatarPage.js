@@ -56,7 +56,45 @@ cursor: url('/img/cursor/defaultCursor.png') 2 2, auto;
 .progress-bar{
     margin-bottom:10px;
 }
-
+@media(max-width: 800px) {
+    
+    .logo{
+        width:100px;
+    }
+    .progress-bar{
+        width:300px;
+        margin-bottom:0;
+    }
+    
+    .image-container{
+        width:60vw;
+        height:60vh;
+        
+    }
+    .avatar-img{
+        width:100%;
+        height:100%;
+        object-fit: contain;
+    }
+    .making-avatar{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+    }
+    .arrows{
+        position:fixed;
+        top:200px;
+        scale:0.7;
+        cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
+    }
+    #arrow-R{
+        right:30px;
+        
+    }
+    #arrow-L{
+        left:30px;
+    }
+  }
 
 `
 function AvatarPage(){

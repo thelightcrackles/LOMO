@@ -58,7 +58,53 @@ const Style = styled.div`
     background-color:#DAF1DD;
     transition: background-color 1s;
 }
-
+@media(max-width:800px){
+    .text{
+        font-family: Noto Sans KR;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 600;
+    }
+    .sex-container{
+        scale:0.7;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        border-radius: 471px;
+        border: 1px solid black;
+        cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
+    
+    
+    }
+    .img-container{
+        display:flex;
+        align-items:space-between;
+        justify-content:space-between;
+        width: min-content;
+        width:100%;
+        
+    }
+    .arrows{
+        position:fixed;
+        top:200px;
+        scale:0.7;
+        cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
+    }
+    #arrow-R{
+        right:30px;
+        
+    }
+    #arrow-L{
+        left:30px;
+    }
+    .content-container{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+}
 `
 
 function ChooseSex(){

@@ -3,7 +3,7 @@ import option2 from './img/trapezialOption1.svg';
 import option1 from './img/trapezialOption2.svg';
 
 import styled from 'styled-components';
-const Box = styled.div`
+const PhotoUploadBoxStyle = styled.div`
 
     margin: 0 10%;
     width: 376px;
@@ -38,6 +38,162 @@ const Box = styled.div`
         padding:5px;
     
     }
+    @media(max-width: 800px) {
+        display:none;
+      }
+
+`
+const AvatarControllerBoxStyle = styled.div`
+
+@media(min-width: 801px) {
+    margin: 0 10%;
+    width: 376px;
+    height: 193px;
+    border: 1px solid #000;
+    background: #FFF;    
+    border-radius:20px;
+    margin-bottom:400px;
+    font-weight: 600;
+    font-size: 16px;
+    text-align:center;
+    display:flex;
+    justify-content:center;
+
+    .upload-btn-container{
+        display:flex;
+        flex-direction:row;
+        width:100%;
+        justify-content:center;
+        align-items:center;
+    }
+    input[type="file"]::-webkit-file-upload-button{
+        display:none;
+    }
+    .text-container{
+        width: 280px;
+        height:auto;
+        display:flex;
+        flex-direction:column;
+        justify-content:space-around;
+        align-items:center;
+        padding:5px;
+    
+    }
+
+
+    .trapezial-container{
+        width: 280px;
+        display:flex;
+        flex-direction:column;
+    
+    }
+    .icon-container{
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+    }
+    .add-photo{
+        text-decoration: underline;
+        cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;;
+    }
+    .slider-input{
+        width:306px;
+        -webkit-appearance: none;
+    }
+    .slider-input::-webkit-slider-runnable-track{
+        -webkit-appearance: none;
+        background:url('/img/sliderBar.png');
+        width: 306px;
+    height: 12px;
+    }
+    .slider-input::-webkit-slider-thumb{
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        margin-top: -12px; /* Centers thumb on the track */
+        background:url('/img/sliderThumb.png');
+        width:30px;
+        height:30px;
+        cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;   
+        
+    
+    }
+    .guide-text{
+        display:flex;
+        width:100%;
+        margin-top:-30px;
+        justify-content:space-between;
+    }
+  }
+    
+
+    @media(max-width: 800px) {
+        font-weight: 600;
+        font-size: 16px;
+    
+        .slider-input{
+            width:80%;
+        }
+        .text-container{
+            display:flex;
+            flex-direction:column;
+            justify-content:space-around;
+            align-items:center;
+            padding:5px;
+            margin-top:10px;
+        }
+        
+
+        .trapezial-container{
+            align-items:center;
+            width:60vw;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+        
+        }
+        .icon-container{
+            margin:-30px;
+            justify-content: center;
+            display:flex;
+            flex-direction:row;
+            justify-content:space-between;
+        }
+        .shoulder-icon{
+            scale:0.7;
+        }
+        .add-photo{
+            text-decoration: underline;
+            cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;;
+        }
+        .slider-input{
+            width:306px;
+            -webkit-appearance: none;
+        }
+        .slider-input::-webkit-slider-runnable-track{
+            -webkit-appearance: none;
+            background:url('/img/sliderBar.png');
+           
+            height: 12px;
+        }
+        .slider-input::-webkit-slider-thumb{
+            -webkit-appearance: none; /* Override default look */
+            appearance: none;
+            margin-top: -12px; /* Centers thumb on the track */
+            background:url('/img/sliderThumb.png');
+            width:30px;
+            height:30px;
+            cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;   
+            
+        
+        }
+        .guide-text{
+            display:flex;
+            width:100%;
+            margin-top:20px;
+            justify-content:space-between;
+        }
+      }
+    
 
 `
 function PhotoUploadBox(){
@@ -54,7 +210,7 @@ function PhotoUploadBox(){
       };
     
       return (
-        <Box>
+        <PhotoUploadBoxStyle>
         
           <div className='text-container'>
             사진을 업로드하세요.<br/><br/>
@@ -88,7 +244,7 @@ function PhotoUploadBox(){
                 src={uploadedImage}
               />
             )}
-        </Box>
+        </PhotoUploadBoxStyle>
       );
     }
 
@@ -106,7 +262,7 @@ function AvatarControllerBox({description,rangeVal,userRangeInput, isTrapezial})
         
     }
     return(
-        <Box>
+        <AvatarControllerBoxStyle>
             {isTrapezial === true && 
             <div className='trapezial-container'>
                 <p>{description} 선택해주세요.</p>
@@ -155,7 +311,7 @@ function AvatarControllerBox({description,rangeVal,userRangeInput, isTrapezial})
                 </div>
             </div>}
         
-        </Box>
+        </AvatarControllerBoxStyle>
     )
 }
 

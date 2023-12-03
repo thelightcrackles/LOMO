@@ -9,36 +9,42 @@ import { useHorizontalScroll } from "./useSideScroll";
 
 
 const ResultPageStyle=styled.div`
-width:100vw;
+@media(min-width:801px){
 
-overflow: auto;
-display:flex;
-
-font-family: 'Noto Sans KR', sans-serif;
-
-
-.avatar-section{
-    position:fixed;
-    top:0;
-    width:28vw;
-    height:100vh;
-    background : rgba(178,225,241,0.6);
+    width:100vw;
     
-
-}
-.text-section{
-    width: 72.7vw;
-    margin-left:auto;
-   height:100vh;
-   //border:1px solid red;
-   position:fixed;
-   top:0;
-   left:28vw;
-    
-}
-#scroll-horizontal{
+    overflow: auto;
     display:flex;
-    flex-direction:row;
+    
+    font-family: 'Noto Sans KR', sans-serif;
+    
+    
+    .avatar-section{
+        position:fixed;
+        top:0;
+        width:28vw;
+        height:100vh;
+        background : rgba(178,225,241,0.6);
+        
+    
+    }
+    .text-section{
+        width: 72.7vw;
+        margin-left:auto;
+       height:100vh;
+       //border:1px solid red;
+       position:fixed;
+       top:0;
+       left:28vw;
+        
+    }
+    #scroll-horizontal{
+        display:flex;
+        flex-direction:row;
+    }
+}
+@media(max-width:800px){
+
 }
 
 
@@ -73,14 +79,21 @@ function Result(){
                 <AvatarSection upperBody={upperBody} lowerBody={lowerBody} imgSrc={`/img/avatar/${searchValue}.png`}/>
             </div>
             <div className='text-section' id='scroll-horizontal' ref={scrollRef} style={{ overflow: "auto" }}>
-                {/* <ScrollHorizontal reverseScroll = { true }> */}
-                    <TextSection_upper type={upperBody} />
-                    <TextSection_lower type={lowerBody}/>
-                    <FashionRef/>
-                    <PlusContent upperBody={upperBody} lowerBody={lowerBody} />
-                    
-
-                {/* </ScrollHorizontal> */}
+            {window.innerWidth > 800 ? (
+                    <>
+                        <TextSection_upper type={upperBody} />
+                        <TextSection_lower type={lowerBody} />
+                        <FashionRef />
+                        <PlusContent upperBody={upperBody} lowerBody={lowerBody} />
+                    </>
+                ) : (
+                    <div>
+                        <TextSection_upper type={upperBody} />
+                        <TextSection_lower type={lowerBody} />
+                        <FashionRef />
+                        <PlusContent upperBody={upperBody} lowerBody={lowerBody} />
+                    </div>
+                )}
             </div>
         </ResultPageStyle>
     )
@@ -89,139 +102,190 @@ export default Result;
 
 
 const AvatarSectionStyle = styled.div`
-border-right:2px solid black;
-box-sizing: border-box;
-
-
-.title-section{
-    font-family: Noto Sans KR;
-    font-weight:700;
-    font-size:2rem;
-    color:black;
-    width:60%;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    font-family: Noto Sans KR;
-font-size: 48px;
-font-style: normal;
-font-weight: 800;
-line-height: 60px; 
-margin-top:10px;
-   
-}
-.title-upper{
-    //margin-right:auto;
-}
-.title-lower{
-    //margin-left:auto;
-    display:flex;
-
-}
-.title-lower img{
-    //width: 50.14px;
-height: 58.865px;
-margin-left:10px;
-margin-top:6px;
-}
-.avatar-container{
-
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-around;
-    align-items:center;
-}
-.avatar-container{
-    position:sticky;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-around;
-    align-items:space-between;
-
+@media(min-width:801px){
     
-}
-.img-container{
-    display:flex;
-    justify-content:center;
+    border-right:2px solid black;
+    box-sizing: border-box;
     
-
-}
-.avatar-img{
-    position:relative;
-    scale:1.1
-}
-.arrow-container{
-    position:absolute;
-    width:100%;
-height: 590px;
-}
-
-.first-arrow{
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    align-items:center;
-    height:30px;
-    position:absolute;
-    left:400px;
-    top:76px;
-}
-.first-arrow div{
+    
+    .title-section{
+        font-family: Noto Sans KR;
+        font-weight:700;
+        font-size:2rem;
+        color:black;
+        width:60%;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        font-family: Noto Sans KR;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 60px; 
+    margin-top:10px;
+       
+    }
+    .title-upper{
+        //margin-right:auto;
+    }
+    .title-lower{
+        //margin-left:auto;
+        display:flex;
+    
+    }
+    .title-lower img{
+        //width: 50.14px;
+    height: 58.865px;
     margin-left:10px;
-    font-weight:600;
-    font-size:1.4rem;
+    margin-top:6px;
+    }
+    .avatar-container{
+    
+        height:100vh;
+        display:flex;
+        flex-direction:column;
+        justify-content:space-around;
+        align-items:center;
+    }
+    .avatar-container{
+        position:sticky;
+        display:flex;
+        flex-direction:column;
+        justify-content:space-around;
+        align-items:space-between;
+    
+        
+    }
+    .img-container{
+        display:flex;
+        justify-content:center;
+        
+    
+    }
+    .avatar-img{
+        position:relative;
+        scale:1.1
+    }
+    .arrow-container{
+        position:absolute;
+        width:100%;
+    height: 590px;
+    }
+    
+    .first-arrow{
+        display:flex;
+        flex-direction:row;
+        justify-content:center;
+        align-items:center;
+        height:30px;
+        position:absolute;
+        left:400px;
+        top:76px;
+    }
+    .first-arrow div{
+        margin-left:10px;
+        font-weight:600;
+        font-size:1.4rem;
+    }
+    .second-arrow{
+        display:flex;
+        flex-direction:row-reverse;
+        justify-content:center;
+        align-items:center;
+        height:30px;
+        position:absolute;
+        left:120px;
+        top:230px;
+    
+    }
+    .second-arrow div{
+        margin-left:10px;
+        font-weight:600;
+        font-size:1.4rem;
+    }
+    .third-arrow{
+        display:flex;
+        flex-direction:row;
+        justify-content:center;
+        align-items:center;
+        height:30px;
+        position:absolute;
+        left:400px;
+        top:280px;
+    
+    }
+    .third-arrow div{
+        margin-left:10px;
+        font-weight:600;
+        margin-bottom:30px;
+        font-size:1.4rem;
+    }
+    .background-img{
+        position:fixed;
+        bottom:0;
+        width:100%;
+    }
+    .snow-img{
+        position:fixed;
+        bottom:0;
+        width:27.9vw;
+        z-index:-1000;
+    }
+    .floor{
+        position:fixed;
+        bottom:10px;
+    
+        z-index:-1;
+    }
 }
-.second-arrow{
-    display:flex;
-    flex-direction:row-reverse;
-    justify-content:center;
-    align-items:center;
-    height:30px;
-    position:absolute;
-    left:120px;
-    top:230px;
 
-}
-.second-arrow div{
-    margin-left:10px;
-    font-weight:600;
-    font-size:1.4rem;
-}
-.third-arrow{
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    align-items:center;
-    height:30px;
-    position:absolute;
-    left:400px;
-    top:280px;
+@media(max-width:800px){
+    font-family: Noto Sans KR;
+    font-size:30px;
+    font-style: normal;
+    font-weight: 800;
+    border-bottom:1px solid black;
+    
+    .avatar-container{
+        background-color:#CAEDF9;
+        display:flex;
+        flex-direction:column;
+        position:sticky;
+    top:0px;
+    }
+    .snow-img{
+        display:none;
 
-}
-.third-arrow div{
-    margin-left:10px;
-    font-weight:600;
-    margin-bottom:30px;
-    font-size:1.4rem;
-}
-.background-img{
-    position:fixed;
-    bottom:0;
-    width:100%;
-}
-.snow-img{
-    position:fixed;
-    bottom:0;
-    width:27.9vw;
-    z-index:-1000;
-}
-.floor{
-    position:fixed;
-    bottom:10px;
-
-    z-index:-1;
+    }
+    .arrow-container{
+        display:none;
+    }
+    .floor{
+        display:none;
+    }
+    .avatar-img{
+        height:30vh;
+    }
+    .animal-img{
+        width:40px;
+    }
+    .img-container{
+        display:flex;
+        justify-content:center;
+    }
+    .title-section{
+        display:flex;
+        flex-direction:row;
+        justify-content:center;
+        align-items:center;
+    }
+    .title-lower{
+        display:flex;
+        flex-direction:row;
+        justify-content:center;
+        align-items:center;
+    }
 }
 `
 function AvatarSection({upperBody,lowerBody,imgSrc}){
@@ -298,7 +362,7 @@ function AvatarSection({upperBody,lowerBody,imgSrc}){
                     <div className='title-upper'>{upperBody},</div>
                     <div className='title-lower'>
                         <div>{lowerBody}</div>
-                        <img src={animalImg}></img>
+                        <img className = 'animal-img' src={animalImg}></img>
                     </div>
                 </div>
                 <div className='img-container'>
@@ -336,26 +400,6 @@ function AvatarSection({upperBody,lowerBody,imgSrc}){
     )
 }
 const TextSectionStyle = styled.div`
-width:72vw;
-text-justify: inter-word;
-display:flex;
-flex-direction:column;
-text-align:justify;
-//align-items:center;
-font-family: Noto Sans KR;
-
-.text-box{
-    color:#444444;
-    width:98%;
-    height:90vh;
-    //border: 10px dashed red;
-    font-size: 1.4rem;
-    line-height: 2.4rem;
-    padding:2rem 7rem;
-    box-sizing: border-box;
-    font-weight:500
-    
-}
 .black-font{
     color:black;
 }
@@ -367,6 +411,47 @@ mark{
 .gray-font{
     color:#d9d9d9;
 }
+@media(min-width:801px){
+
+    width:72vw;
+    text-justify: inter-word;
+    display:flex;
+    flex-direction:column;
+    text-align:justify;
+    //align-items:center;
+    font-family: Noto Sans KR;
+    
+    .text-box{
+        color:#444444;
+        width:98%;
+        height:90vh;
+        //border: 10px dashed red;
+        font-size: 1.4rem;
+        line-height: 2.4rem;
+        padding:2rem 7rem;
+        box-sizing: border-box;
+        font-weight:500
+        
+    }
+    
+}
+@media(max-width:800px){
+    padding:30px;
+    text-justify: inter-word;
+    display:flex;
+    flex-direction:column;
+    text-align:justify;
+    //align-items:center;
+    font-family: Noto Sans KR;
+    .text-box{
+        color:#444444;
+        font-size: 20px;
+        
+        box-sizing: border-box;
+        font-weight:500
+        
+    }
+}
 
 `
 const HeaderStyle = styled.div`
@@ -375,7 +460,7 @@ const HeaderStyle = styled.div`
     padding:20px 50px;
     
     width:100vw;
-    height:70px;
+    //height:70px;
     
     div{
         letter-spacing: -3px;
@@ -384,6 +469,9 @@ const HeaderStyle = styled.div`
         
     }
 
+    @media(max-width:800px){
+        display:none;
+    }
 `
 const ImgBoxStyle = styled.div`
     display:flex;
@@ -410,6 +498,9 @@ const ImgBoxStyle = styled.div`
     }
     img{
         margin: 0px 4px;
+    }
+    @media(max-width:800px){
+        display:none;
     }
 `
 
@@ -502,6 +593,9 @@ font-weight: 600;
     
     
 }
+@media(max-width:800px){
+    display:none;
+}
 
 
 `
@@ -513,6 +607,9 @@ align-items:center;
     width:156px;
     height:156px;
     cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
+}
+@media(max-width:800px){
+    display:none;
 }
 
 `
@@ -546,17 +643,17 @@ function PlusContent({lowerBody,upperBody}){
                                 </div>
                             </div>
                             <div className='content-container'>
-                                <img src='/img/content_img/content1.svg'></img>
+                                <img src='/img/content_img/content3.svg'></img>
                                 <div className='text-container'>
                                     <div className='type'>{lowerBody}</div>
-                                    <div className='content-title'>체형에 잘 어울리는 악세사리 추천!</div>
+                                    <div className='content-title'>하체 유형과 신발의 연관성 알아보기!</div>
                                 </div>
                             </div>
                             <div className='content-container'>
-                                <img src='/img/content_img/content2.svg'></img>
+                                <img src='/img/content_img/content4.svg'></img>
                                 <div className='text-container'>
                                     <div className='type'>{upperBody}</div>
-                                    <div className='content-title'>뮤비 속 착장 파헤치기!</div>
+                                    <div className='content-title'>나는 어떤 재킷을 입어야할까?</div>
                                 </div>
                             </div>
                         </div>
@@ -580,17 +677,17 @@ function PlusContent({lowerBody,upperBody}){
                                 </div>
                             </div>
                             <div className='content-container'>
-                                <img src='/img/content_img/youtube1.svg'></img>
+                                <img src='/img/content_img/youtube3.svg'></img>
                                 <div className='text-container'>
                                     <div className='type'>{lowerBody}</div>
-                                    <div className='content-title'>승모근 있다면 단발 or 긴머리?</div>
+                                    <div className='content-title'>베스트핏 청바지 찾기</div>
                                 </div>
                             </div>
                             <div className='content-container'>
-                                <img src='/img/content_img/youtube2.svg'></img>
+                                <img src='/img/content_img/youtube4.svg'></img>
                                 <div className='text-container'>
                                     <div className='type'>{upperBody}</div>
-                                    <div className='content-title'>롱 스커트 안 어울리는 유형</div>
+                                    <div className='content-title'>겨울룩북-체형 완벽보완 비법 대공개</div>
                                 </div>
                             </div>
                         </div>

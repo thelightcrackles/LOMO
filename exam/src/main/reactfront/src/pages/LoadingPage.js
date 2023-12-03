@@ -5,29 +5,59 @@ import styled from 'styled-components';
 import anime from 'animejs';
 
 const Style = styled.div`
-.logo{
-    position:absolute;
-    top:25px;
-    left:15px;
-    cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
+
+@media(min-width: 801px){
+    .logo{
+        position:absolute;
+        top:25px;
+        left:15px;
+        cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
+    }
+    .content-container{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        width:100vw;
+        height:100vh;
+    }
+    .animal-container{
+        display:flex;
+        flex-direction:row;
+        width:70vw;
+        justify-content:space-around;
+    }
+    h1{
+        font-size:3rem;
+        margin-bottom:7rem;
+    }
 }
-.content-container{
+@media(max-width: 800px){
+    height:100vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
-    align-items:center;
-    width:100vw;
-    height:100vh;
-}
-.animal-container{
-    display:flex;
-    flex-direction:row;
-    width:70vw;
-    justify-content:space-around;
-}
-h1{
-    font-size:3rem;
-    margin-bottom:7rem;
+
+    .logo{
+        display:none;
+        
+    }
+    .content-container{
+        
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+    .animal-container{
+        width:80vw;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+    }
+    .animal-container img{
+        width:30px;
+    }
 }
 `
 function LoadingPage(){

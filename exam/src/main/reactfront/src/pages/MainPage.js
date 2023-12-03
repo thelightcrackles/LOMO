@@ -10,110 +10,159 @@ import AvatarPage from './AvatarPage';
 import {Routes,Route,Link,useNavigate,Outlet} from 'react-router-dom'
 
 const ShapedBlock = styled.div`
-// height:1080px;
+
+@media(min-width:801px){
+  // height:1080px;
 cursor: url('/img/cursor/defaultCursor.png') 2 2, auto;
 display: flex;
 justify-content: center;
 align-items: center;
 margin:20px 107px;
 
-    .container{
-      width:1920px;
-      // height:100vh;
-        display:flex;
-        flex-direction:column;
-        justify-content: center;
-        align-items: center;
-        position:relative;
-        
-    }
-    .title-container{
-      width:100%;
-      display:flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-weight: 500;
-      position:relative;
-      top:10%;
-      position:absolute;
-      top:1%;
-  }
-  .header{
-    width:100%;
-    display:flex;
-    align-items:center;
-    justify-content: center;
-  }
-  .logo{
-    font-size:x-large ;
-    text-align: center;
-    
-}
-.slogan{
-  font-size:x-large;
-  text-align: center;
-  font-weight:600;
-  line-height:0.7;
-  flex-grow:1;
- 
-  
-}
-  .login-container{
-    font-weight: 600;
-    display:flex;    
-    align-items:center;
-    white-space:nowrap;
-    position:absolute;
-    right:50px;
-    cursor: url('/img/loginCursor.png') 2 2, auto;
-
-  }
-  .join{
-    padding-left:50px;
-  }
-  .background-main{
-    text-align: center;
-    position:absolute;
-    top:90px;
-    //height:1080px;
-    height: auto; /* 높이를 자동으로 설정하여 비율에 맞게 축소되도록 합니다. */
-    max-height: 100%;
-}
-
-.hoverEvent{
-  cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
-}
-.modal-container{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-item:center;
-  z-index:10000;
-}
 .main-circle{
   position:absolute;
   bottom:250px;
   right:300px;
   animation: rotate 20s linear infinite;
-}
-@keyframes rotate {
+  }
+  @keyframes rotate {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
-.main-circle-text{
+  }
+  .main-circle-text{
   position:absolute;
   bottom:330px;
   right:350px;
-}
+  }
+
 .circle-btn-container{
   cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
+}
+  .container{
+    width:1920px;
+    // height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      position:relative;
+      
+  }
+  .title-container{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    position:relative;
+    top:10%;
+    position:absolute;
+    top:1%;
+}
+.header{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+.logo{
+  font-size:x-large ;
+  text-align: center;
+  
+}
+.slogan{
+font-size:x-large;
+text-align: center;
+font-weight:600;
+line-height:0.7;
+flex-grow:1;
+
+
+}
+.login-container{
+  font-weight: 600;
+  display:flex;    
+  align-items:center;
+  white-space:nowrap;
+  position:absolute;
+  right:50px;
+  cursor: url('/img/loginCursor.png') 2 2, auto;
+
+}
+.join{
+  padding-left:50px;
+}
+.background-main{
+  text-align: center;
+  position:absolute;
+  top:90px;
+  //height:1080px;
+  height: auto; /* 높이를 자동으로 설정하여 비율에 맞게 축소되도록 합니다. */
+  max-height: 100%;
+}
+
+.hoverEvent{
+cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
+}
+.modal-container{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-item:center;
+z-index:10000;
+}
+
+}
+@media(max-width:800px){
+  font-family: 'Noto Sans KR', sans-serif;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  .background-main{
+    position:fixed;
+    z-index:-1000;
+  }
+  .login-container div{
+    display:none;
+  }
+  .slogan{
+    
+  display:none;
+    
+  }
+  .container{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+  }
+  .main-circle{
+    display:none;
+    }
+   
+  
+  .circle-btn-container{
+    cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
+  }
+  .header{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+  }
+  .message{
+    color:red;
+    font-weight:300;
+  }
 }
 
 
@@ -188,6 +237,7 @@ function MainPage() {
         <div className='container'>
             <div className="title-container">
                 <div className="header">
+                  <div className='message'>*이 웹사이트는 pc 버전에 최적화되어있습니다.</div>
                     <div className="logo">Personal Body Type Test</div>
                     <div className='login-container'>
                       <div className="log-in">로그인</div>
@@ -290,7 +340,7 @@ function MainPage() {
         <div className='modal-container'>
         { signUpModal==true ? <SignupModal isSignUpModal={setSignUpModal} />:null} 
         </div>
-        </div>
+      </div>
     </ShapedBlock>
   );
 }

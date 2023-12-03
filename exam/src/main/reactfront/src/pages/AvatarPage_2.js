@@ -95,48 +95,7 @@ padding:10px;
 
 
 
-.trapezial-container{
-    width: 280px;
-    display:flex;
-    flex-direction:column;
 
-}
-.icon-container{
-    display:flex;
-    flex-direction:row;
-    justify-content:space-between;
-}
-.add-photo{
-    text-decoration: underline;
-    cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;;
-}
-.slider-input{
-    width:306px;
-    -webkit-appearance: none;
-}
-.slider-input::-webkit-slider-runnable-track{
-    -webkit-appearance: none;
-    background:url('/img/sliderBar.png');
-    width: 306px;
-height: 12px;
-}
-.slider-input::-webkit-slider-thumb{
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    margin-top: -12px; /* Centers thumb on the track */
-    background:url('/img/sliderThumb.png');
-    width:30px;
-    height:30px;
-    cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;   
-    
-
-}
-.guide-text{
-    display:flex;
-    width:100%;
-    margin-top:-30px;
-    justify-content:space-between;
-}
 .shoulder-icon{
     cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
 }
@@ -144,6 +103,48 @@ height: 12px;
     position:fixed;
     bottom:200px;
 }
+`
+
+const MediaQueryStyle = styled.div`
+@media(max-width: 800px) {
+    
+    .logo{
+        width:100px;
+    }
+    .progress-bar{
+        width:300px;
+        margin-bottom:0;
+    }
+    
+    .image-container{
+        width:60vw;
+        height:60vh;
+        
+    }
+    .avatar-img{
+        width:100%;
+        height:100%;
+        object-fit: contain;
+    }
+    .making-avatar{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+    }
+    .arrows{
+        position:fixed;
+        top:200px;
+        scale:0.7;
+        cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
+    }
+    #arrow-R{
+        right:30px;
+        
+    }
+    #arrow-L{
+        left:30px;
+    }
+  }
 `
 function AvatarPage_2(){
     let navigate = useNavigate();
@@ -250,11 +251,12 @@ function AvatarPage_2(){
 
     
     return(
+        <MediaQueryStyle>
         <AvatarPageStyle>
             <div className='main-container'>
                 <img className='logo' src={logo} alt='logo image' onClick={()=>navigate('/')}/>
                 <div className='avatar-container'>
-                <ProgressBar imgSrc={progressBarImg[step]} imgAlt={'progress bar'}/>
+                <ProgressBar className='progress-bar' imgSrc={progressBarImg[step]} imgAlt={'progress bar'}/>
                     <div className='avatar-and-progress-bar'>
                         <LeftArrow className='arrows' setStep={handleStep} />
                         <div className='making-avatar'>
@@ -278,7 +280,8 @@ function AvatarPage_2(){
                     </div>
                 </div>
             </AvatarPageStyle>
-        
+            </MediaQueryStyle>
+
     )
             
 }
