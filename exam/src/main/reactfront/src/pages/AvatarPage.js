@@ -103,13 +103,8 @@ function AvatarPage(){
                 <div className='avatar-container'>
                         <img className='progress-bar' src={progressBar}></img>
                     <div className='avatar-and-progress-bar'>
-
                         <ChooseSex/>
-
                     </div>
-                    
-                    
-
                     </div>
                 </div>
             </AvatarPageStyle>

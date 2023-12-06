@@ -18,6 +18,11 @@ cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
     font-weight: 500;
     line-height: 36px; /* 100% */
 }
+@media(max-width: 800px){
+    .arrow-text{
+        display:none;
+    }
+}
 
 `
 function RightArrow({setStep}){

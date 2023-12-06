@@ -193,7 +193,6 @@ function AvatarPage_2(){
             navigate('/avatar/0');
         }
         
-
         if(step>2){
             setRangeVal(3);
         }
