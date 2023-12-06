@@ -12,13 +12,16 @@ import {Routes,Route,Link,useNavigate,Outlet} from 'react-router-dom'
 const ShapedBlock = styled.div`
 
 @media(min-width:801px){
+
   // height:1080px;
 cursor: url('/img/cursor/defaultCursor.png') 2 2, auto;
 display: flex;
 justify-content: center;
 align-items: center;
 margin:20px 107px;
-
+.message{
+    display:none;
+  }
 .main-circle{
   position:absolute;
   bottom:250px;

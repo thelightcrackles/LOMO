@@ -50,10 +50,7 @@ cursor: url('/img/cursor/defaultCursor.png') 2 2, auto;
     left:15px;
     cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
 }
-.arrows{
-    position:fixed;
-    cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
-}
+
 #arrow-R{
     right:50px;
 }
@@ -85,6 +82,7 @@ cursor: url('/img/cursor/defaultCursor.png') 2 2, auto;
     width:280px;
     display:flex;
     justify-content:center;
+    height:70vh;
 }
 .image-container img{
     
@@ -264,10 +262,10 @@ function AvatarPage_2(){
                             
                             <div className='image-container'>
                                 {isTrapezial && (
-                                <img className='avatar-img' src={`/img/avatar/${imageArray[rangeVal] || imageArray[0]}.png`} alt='Avatar' />
+                                <img className='avatar-img' src={`/img/avatar/${imageArray[rangeVal] || imageArray[0]}.svg`} alt='Avatar' />
                                 )}
                                 {!isTrapezial && (
-                                <img className='avatar-img' src={`/img/avatar/${imageArray[rangeVal - 1] || imageArray[0]}.png`} alt='Avatar' />
+                                <img className='avatar-img' src={`/img/avatar/${imageArray[rangeVal - 1] || imageArray[0]}.svg`} alt='Avatar' />
                                 )}
                             </div>
                             <AvatarControllerBox description={des[step]} rangeVal={rangeVal} userRangeInput={userRangeInput} isTrapezial={isTrapezial}/>

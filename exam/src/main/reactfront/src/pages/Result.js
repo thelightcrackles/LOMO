@@ -50,243 +50,266 @@ const ResultPageStyle=styled.div`
 
 `
 
-function Result(){
+function Result() {
     const location = useLocation();    
     const state = location.state;
     
     let searchValue = Number(state.join(''));
-    let upperBody='';
-    let lowerBody='';
+    const [upperBody, setUpperBody] = useState('');
+    const [lowerBody, setLowerBody] = useState('');
+    const [refImage, setRefImg] = useState([]);
 
-    const foundEntry = Object.values(bodyData).find(entry => {
-        return entry.AvatarFileNumbers.includes(Number(searchValue));
-    });
-    if (foundEntry) {
-        // foundEntry가 정의된 경우의 처리
-        console.log('foundEntry:', foundEntry);
-        upperBody = foundEntry.UpperBodyTypes;
-        lowerBody = foundEntry.LowerBodyTypes;
-    } else {
-        // foundEntry가 undefined인 경우의 처리
-        console.log('Entry not found for search value:', searchValue);
-    }
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const foundEntry = Object.values(bodyData).find(entry => {
+                    return entry.AvatarFileNumbers.includes(Number(searchValue));
+                });
     
+                if (foundEntry) {
+                    console.log('foundEntry:', foundEntry);
+                    setUpperBody(foundEntry.UpperBodyTypes);
+                    setLowerBody(foundEntry.LowerBodyTypes);
+                    setRefImg(foundEntry.FashionRefImage);
+                } else {
+                    console.log('Entry not found for search value:', searchValue);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+    
+        fetchData();
+    }, [searchValue]);  // searchValue를 의존성으로 추가하여 searchValue가 변경될 때마다 useEffect를 실행합니다.
+
+    console.log('upperBody:', upperBody);
+    console.log('lowerBody:', lowerBody);
+    console.log('arr:', refImage);
+
     const scrollRef = useHorizontalScroll();
 
-    return(
-        <ResultPageStyle >
-            <div className='avatar-section' >
-                <AvatarSection upperBody={upperBody} lowerBody={lowerBody} imgSrc={`/img/avatar/${searchValue}.png`}/>
+    return (
+        <ResultPageStyle>
+            <div className='avatar-section'>
+                <AvatarSection upperBody={upperBody} lowerBody={lowerBody} imgSrc={`/img/avatar/${searchValue}.svg`} />
             </div>
             <div className='text-section' id='scroll-horizontal' ref={scrollRef} style={{ overflow: "auto" }}>
-            {window.innerWidth > 800 ? (
+                {window.innerWidth > 800 ? (
                     <>
-                        <TextSection_upper type={upperBody} />
-                        <TextSection_lower type={lowerBody} />
-                        <FashionRef />
+                        {upperBody && <TextSection_upper type={upperBody} />}
+                        {lowerBody && <TextSection_lower type={lowerBody} />}
+                        {refImage !== undefined && <FashionRef refImage={refImage} />}
                         <PlusContent upperBody={upperBody} lowerBody={lowerBody} />
                     </>
                 ) : (
                     <div>
-                        <TextSection_upper type={upperBody} />
-                        <TextSection_lower type={lowerBody} />
-                        <FashionRef />
+                        {upperBody && <TextSection_upper type={upperBody} />}
+                        {lowerBody && <TextSection_lower type={lowerBody} />}
+                        {refImage !== undefined && <FashionRef refImage={refImage} />}
                         <PlusContent upperBody={upperBody} lowerBody={lowerBody} />
                     </div>
                 )}
             </div>
         </ResultPageStyle>
-    )
+    );
 }
+
 export default Result;
 
 
 const AvatarSectionStyle = styled.div`
-@media(min-width:801px){
-    
-    border-right:2px solid black;
+@media (min-width: 801px) {
+    border-right: 2px solid black;
     box-sizing: border-box;
-    
-    
-    .title-section{
+
+    .title-section {
         font-family: Noto Sans KR;
-        font-weight:700;
-        font-size:2rem;
-        color:black;
-        width:60%;
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
+        font-weight: 700;
+        font-size: 2rem;
+        color: black;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         font-family: Noto Sans KR;
-    font-size: 48px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: 60px; 
-    margin-top:10px;
-       
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 60px;
+        margin-top: 10px;
     }
-    .title-upper{
-        //margin-right:auto;
+
+    .title-upper {
+        /* margin-right: auto; */
     }
-    .title-lower{
-        //margin-left:auto;
-        display:flex;
-    
+
+    .title-lower {
+        /* margin-left: auto; */
+        display: flex;
     }
-    .title-lower img{
-        //width: 50.14px;
-    height: 58.865px;
-    margin-left:10px;
-    margin-top:6px;
+
+    .title-lower img {
+        /* width: 50.14px; */
+        height: 58.865px;
+        margin-left: 10px;
+        margin-top: 6px;
     }
-    .avatar-container{
-    
-        height:100vh;
-        display:flex;
-        flex-direction:column;
-        justify-content:space-around;
-        align-items:center;
+
+    .avatar-container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        position: sticky;
     }
-    .avatar-container{
-        position:sticky;
-        display:flex;
-        flex-direction:column;
-        justify-content:space-around;
-        align-items:space-between;
-    
-        
+
+    .img-container {
+        display: flex;
+        justify-content: center;
     }
-    .img-container{
-        display:flex;
-        justify-content:center;
-        
-    
+
+    .avatar-img {
+        /* position: relative; */
+        scale: 1.1;
+        height: 590px; 
+        //z-index:1000;
     }
-    .avatar-img{
-        position:relative;
-        scale:1.1
+
+    .arrow-container {
+        position: absolute;
+        width: 100%;
+        height: 590px;
     }
-    .arrow-container{
-        position:absolute;
-        width:100%;
-    height: 590px;
+
+    .first-arrow {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        position: absolute;
+        left: 400px;
+        top: 76px;
     }
-    
-    .first-arrow{
-        display:flex;
-        flex-direction:row;
-        justify-content:center;
-        align-items:center;
-        height:30px;
-        position:absolute;
-        left:400px;
-        top:76px;
+
+    .first-arrow div {
+        margin-left: 10px;
+        font-weight: 600;
+        font-size: 1.4rem;
     }
-    .first-arrow div{
-        margin-left:10px;
-        font-weight:600;
-        font-size:1.4rem;
+
+    .second-arrow {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        position: absolute;
+        left: 120px;
+        top: 230px;
     }
-    .second-arrow{
-        display:flex;
-        flex-direction:row-reverse;
-        justify-content:center;
-        align-items:center;
-        height:30px;
-        position:absolute;
-        left:120px;
-        top:230px;
-    
+
+    .second-arrow div {
+        margin-left: 10px;
+        font-weight: 600;
+        font-size: 1.4rem;
     }
-    .second-arrow div{
-        margin-left:10px;
-        font-weight:600;
-        font-size:1.4rem;
+
+    .third-arrow {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        position: absolute;
+        left: 400px;
+        top: 280px;
     }
-    .third-arrow{
-        display:flex;
-        flex-direction:row;
-        justify-content:center;
-        align-items:center;
-        height:30px;
-        position:absolute;
-        left:400px;
-        top:280px;
-    
+
+    .third-arrow div {
+        margin-left: 10px;
+        font-weight: 600;
+        margin-bottom: 30px;
+        font-size: 1.4rem;
     }
-    .third-arrow div{
-        margin-left:10px;
-        font-weight:600;
-        margin-bottom:30px;
-        font-size:1.4rem;
+
+    .background-img {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
     }
-    .background-img{
-        position:fixed;
-        bottom:0;
-        width:100%;
+
+    .snow-img {
+        position: fixed;
+        bottom: 0;
+        width: 27.9vw;
+        z-index: -1000;
     }
-    .snow-img{
-        position:fixed;
-        bottom:0;
-        width:27.9vw;
-        z-index:-1000;
-    }
-    .floor{
-        position:fixed;
-        bottom:10px;
-    
-        z-index:-1;
+
+    .floor {
+        position: fixed;
+        bottom: 10px;
+        z-index: -1;
     }
 }
 
-@media(max-width:800px){
+@media (max-width: 800px) {
     font-family: Noto Sans KR;
-    font-size:30px;
+    font-size: 30px;
     font-style: normal;
     font-weight: 800;
-    border-bottom:1px solid black;
-    
-    .avatar-container{
-        background-color:#CAEDF9;
-        display:flex;
-        flex-direction:column;
-        position:sticky;
-    top:0px;
-    }
-    .snow-img{
-        display:none;
+    border-bottom: 1px solid black;
 
+    .avatar-container {
+        background-color: #CAEDF9;
+        display: flex;
+        flex-direction: column;
+        position: sticky;
+        top: 0px;
     }
-    .arrow-container{
-        display:none;
+
+    .snow-img {
+        display: none;
     }
-    .floor{
-        display:none;
+
+    .arrow-container {
+        display: none;
     }
-    .avatar-img{
-        height:30vh;
+
+    .floor {
+        display: none;
     }
-    .animal-img{
-        width:40px;
+
+    .avatar-img {
+        height: 30vh;
     }
-    .img-container{
-        display:flex;
-        justify-content:center;
+
+    .animal-img {
+        width: 40px;
     }
-    .title-section{
-        display:flex;
-        flex-direction:row;
-        justify-content:center;
-        align-items:center;
+
+    .img-container {
+        display: flex;
+        justify-content: center;
     }
-    .title-lower{
-        display:flex;
-        flex-direction:row;
-        justify-content:center;
-        align-items:center;
+
+    .title-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title-lower {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
     }
 }
+
 `
 function AvatarSection({upperBody,lowerBody,imgSrc}){
     const [animalImg, setAnimalImg] = useState('');
@@ -534,8 +557,7 @@ function TextSection_lower({type}){
     )
 }
 
-function FashionRef(){
-    
+function FashionRef({refImage}){
     return(
         <TextSectionStyle>
             <HeaderStyle>
@@ -543,18 +565,18 @@ function FashionRef(){
             </HeaderStyle>
             <ImgBoxStyle>
                 <div className='firstLine'>
-                    <img src='/img/result_img/1.svg'></img>
-                    <img src='/img/result_img/2.svg'></img>
-                    <img src='/img/result_img/3.svg'></img>
-                    <img src='/img/result_img/4.svg'></img>
-                    <img src='/img/result_img/5.svg'></img>
+                    <img src={`/img/fashionRef/0${refImage[0]}.svg`}></img>
+                    <img src={`/img/fashionRef/0${refImage[1]}.svg`}></img>
+                    <img src={`/img/fashionRef/0${refImage[2]}.svg`}></img>
+                    <img src={`/img/fashionRef/0${refImage[3]}.svg`}></img>
+                    <img src={`/img/fashionRef/0${refImage[4]}.svg`}></img>
                 </div>
                 <div className='secondLine'>
-                    <img src='/img/result_img/6.svg'></img>
-                    <img src='/img/result_img/7.svg'></img>
-                    <img src='/img/result_img/8.svg'></img>
-                    <img src='/img/result_img/9.svg'></img>
-                    <img src='/img/result_img/10.svg'></img>
+                    <img src={`/img/fashionRef/${refImage[5]}.svg`}></img>
+                    <img src={`/img/fashionRef/${refImage[6]}.svg`}></img>
+                    <img src={`/img/fashionRef/${refImage[7]}.svg`}></img>
+                    <img src={`/img/fashionRef/${refImage[8]}.svg`}></img>
+                    <img src={`/img/fashionRef/${refImage[9]}.svg`}></img>
                 </div>
             </ImgBoxStyle>
         </TextSectionStyle>

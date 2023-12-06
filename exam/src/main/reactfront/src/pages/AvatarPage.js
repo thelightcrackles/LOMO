@@ -42,11 +42,7 @@ cursor: url('/img/cursor/defaultCursor.png') 2 2, auto;
     left:15px;
     cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
 }
-.arrows{
-    position:fixed;
-    cursor: url('/img/cursor/pointerCursor.png') 2 2, auto;
 
-}
 #arrow-R{
     right:50px;
 }
