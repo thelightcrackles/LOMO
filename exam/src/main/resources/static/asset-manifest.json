@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e6c13ad2.css",
+    "main.js": "/static/js/main.7ac7dc2e.js",
+    "static/js/787.088c9bc8.chunk.js": "/static/js/787.088c9bc8.chunk.js",
+    "static/media/textBox4.svg": "/static/media/textBox4.6ebafcb649c2d9e7676e6175cca94313.svg",
+    "static/media/textBox11.svg": "/static/media/textBox11.42916f901418de7b042371291c2ad543.svg",
+    "static/media/textBox3.svg": "/static/media/textBox3.789312cb9b879ac0653f0e8f33a7c506.svg",
+    "static/media/trapezialOption2.svg": "/static/media/trapezialOption2.0604ad303189deadb2a1a2895fe39085.svg",
+    "static/media/trapezialOption1.svg": "/static/media/trapezialOption1.ce7c79858196f53a859ea36f79eaf98e.svg",
+    "static/media/progressBar_waist.svg": "/static/media/progressBar_waist.2a32a54efeec241347676a5310726711.svg",
+    "static/media/progressBar_femur.svg": "/static/media/progressBar_femur.290552cdcdc2ed0dc370fa041678fe05.svg",
+    "static/media/progressBar_hip.svg": "/static/media/progressBar_hip.7c0298eb75076f8e9d4c1310e7b3d022.svg",
+    "static/media/progressBar_trapezial.svg": "/static/media/progressBar_trapezial.679493d5d9b3c9c1c3d32c0b76e995d0.svg",
+    "static/media/progressBar_shoulder.svg": "/static/media/progressBar_shoulder.35273b7e88ba304feafefb18ab67ea18.svg",
+    "static/media/progressBar_sex.svg": "/static/media/progressBar_sex.024c605e9e2a605a53357eab3830b42f.svg",
+    "static/media/woman.svg": "/static/media/woman.910c5707b6befdccb7226fcda1ffb708.svg",
+    "static/media/logo_2.svg": "/static/media/logo_2.cd620d1c47c9e2634267d7ca7fe4bf53.svg",
+    "static/media/man.svg": "/static/media/man.785d08b2223cbe6d22b04efded86084e.svg",
+    "index.html": "/index.html",
+    "static/media/snowBG.svg": "/static/media/snowBG.0aff998044214dc9c69e315b9808a2e8.svg",
+    "main.e6c13ad2.css.map": "/static/css/main.e6c13ad2.css.map",
+    "main.7ac7dc2e.js.map": "/static/js/main.7ac7dc2e.js.map",
+    "787.088c9bc8.chunk.js.map": "/static/js/787.088c9bc8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.7ac7dc2e.js"
+  ]
+}
